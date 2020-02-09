@@ -1,0 +1,51 @@
+<ng-template #content let-modal>
+  <div class="modal-header" *ngIf="!isDeleteForm">
+    <h4 class="modal-title" id="modal-basic-title">
+      <img src="{{ activeUser.avatar }}" alt="" *ngIf="!isAddForm" />
+      <img src="./assets/icons8-user@2x.png" alt="" *ngIf="isAddForm" />
+    </h4>
+
+    <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="editUserSubmitted(activeUser.id)" [formGroup]="editForm" *ngIf="!isDeleteForm" novalidate>
+      <div class="form-group">
+        <label class="d-block">
+          Name
+          <input
+            type="text"
+            class="form-control"
+            formControlName="username"
+            autocomplete="username"
+            [placeholder]="'Username..'"
+            required
+          />
+          <span hidden>Username</span>
+        </label>
+        <label class="d-block">
+          Job Title
+          <input
+            type="text"
+            class="form-control"
+            formControlName="jobtitle"
+            autocomplete="Job Title"
+            [placeholder]="'Job Title..'"
+          />
+          <span hidden>job title</span>
+        </label>
+      </div>
+      <button type="button" class="btn btn-secondary mt-2 mr-3" (click)="modal.close()">Cancel</button>
+      <button type="button" class="btn btn-primary mt-2" type="submit" [disabled]="editForm.invalid">
+        {{ isAddForm ? 'Add' : 'Save' }}
+      </button>
+    </form>
+    <div class="deleteBox" *ngIf="isDeleteForm">
+      <p>Are you sure you want to delete</p>
+      <h6>{{ activeUser.user_name }}</h6>
+      <button type="button" class="btn btn-secondary mt-3 mr-3" (click)="modal.close()">No</button>
+      <button type="button" class="btn btn-primary mt-3" (click)="deleteUserSubmitted(activeUser.id)">Yes</button>
+    </div>
+  </div>
+</ng-template>

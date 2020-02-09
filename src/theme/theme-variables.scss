@@ -1,0 +1,68 @@
+/*
+ * Application global variables.
+ */
+
+// Set Font Awesome font path
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap");
+
+//SNSF Font-Face
+@font-face {
+  font-family: "SFNS Display";
+  src: url("/assets/@font-face/9e14b4e72dec1db9a60d2636bbfe64f2.eot"); /* IE9*/
+  src: url("/assets/@font-face/9e14b4e72dec1db9a60d2636bbfe64f2.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("/assets/@font-face/9e14b4e72dec1db9a60d2636bbfe64f2.woff2") format("woff2"),
+    /* chrome、firefox */ url("/assets/@font-face/9e14b4e72dec1db9a60d2636bbfe64f2.woff") format("woff"),
+    /* chrome、firefox */ url("/assets/@font-face/9e14b4e72dec1db9a60d2636bbfe64f2.ttf") format("truetype"),
+    /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+      url("/assets/@font-face/9e14b4e72dec1db9a60d2636bbfe64f2.svg#SFNS Display") format("svg"); /* iOS 4.1- */
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap variables
+//
+// Override Bootstrap variables here to suite your theme.
+// Copy variables you want to customize from node_modules/bootstrap/scss/_variables.scss
+
+//
+// Color system
+//
+
+$white: #fff;
+$gray-100: #f5f5f5;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #7f8c8d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+$blue: #0073dd;
+$indigo: #6610f2;
+$purple: #8e44ad;
+$pink: #e83e8c;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #28a745;
+$teal: #20c997;
+$cyan: #17a2b8;
+
+$theme-colors: (
+  primary: $purple,
+  secondary: $gray-600,
+  success: $green,
+  info: $cyan,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  dark: $gray-600
+);
+
+// Use Bootstrap defaults for other variables, imported here so we can access all app variables in one place when used
+// in components.
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";

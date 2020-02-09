@@ -1,0 +1,85 @@
+@import "src/theme/theme-variables";
+@import "src/theme/theme";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+p,
+label,
+input {
+  color: $gray-600;
+  font-size: 14px;
+}
+
+.login-container {
+  position: absolute;
+  top: 30px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+  }
+}
+
+.card {
+  padding: 0;
+  border-radius: 10px;
+
+  .card-body {
+    background-color: $white;
+    border-radius: 10px;
+    padding: 0;
+    @extend .box-shadow;
+
+    .form-wrapper {
+      position: relative;
+      left: -30px;
+    }
+  }
+  .card-title {
+    color: #34495e;
+
+    + p {
+      font-size: 16px;
+    }
+  }
+}
+
+form {
+  label {
+    margin-bottom: 20px;
+    input {
+      margin-top: 5px;
+    }
+  }
+
+  .ng-invalid.ng-touched:not(form) {
+    border-left: 4px solid theme-color("danger");
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .card .card-body .form-wrapper {
+    left: -15px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .card .card-body .form-wrapper {
+    padding: 20px;
+    position: static;
+  }
+}
+@include media-breakpoint-down(xs) {
+  .container {
+    width: 100%;
+  }
+  .card .card-body .form-wrapper {
+    padding: 40px;
+  }
+}

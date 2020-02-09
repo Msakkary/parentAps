@@ -1,0 +1,67 @@
+@import "src/theme/theme-variables";
+@import "src/theme/theme";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+p,
+label,
+input {
+  color: $gray-600;
+  font-size: 14px;
+}
+
+::ng-deep .modal-spaces {
+  .modal-dialog {
+    max-width: 360px;
+  }
+  .modal-content {
+    border-radius: 10px;
+  }
+}
+
+.modal-header {
+  border: 0;
+  .modal-title img {
+    position: absolute;
+    top: -53px;
+    border-radius: 50%;
+    border: solid 3px #fff;
+    left: calc(50% - 53px);
+    max-width: 106px;
+  }
+}
+.modal-body {
+  padding-top: 40px;
+
+  .btn {
+    width: 155px;
+    text-transform: capitalize;
+  }
+}
+
+form {
+  label {
+    margin-bottom: 20px;
+    input {
+      margin-top: 5px;
+    }
+  }
+
+  .ng-invalid.ng-touched:not(form) {
+    border-left: 4px solid theme-color("danger");
+  }
+}
+
+.deleteBox {
+  text-align: center;
+  .modal-body {
+    padding-top: 30px;
+  }
+}
+@include media-breakpoint-down(sm) {
+  ::ng-deep .modal-spaces .modal-dialog {
+    max-width: inherit;
+  }
+  form {
+    text-align: center;
+  }
+}

@@ -1,0 +1,74 @@
+<div class="login-container bg-light">
+  <div class="login-box">
+    <div class="container">
+      <div class="card col-md-12 col-lg-9 mt-2 mx-auto">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 d-none d-md-block"><img src="./assets/loginImage.png" alt="" class="img-fluid" /></div>
+            <div class="col-md-6 col-sm-9 form-wrapper m-auto">
+              <h4 class="card-title">
+                Welcome back!
+              </h4>
+              <p>Please Login to access your <Span class="text-primary">Spaces</Span> Dashboard</p>
+              <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+                <div class="alert alert-danger" [hidden]="!error || isLoading">
+                  Username or password incorrect.
+                </div>
+                <div class="form-group">
+                  <label class="d-block">
+                    Username
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="username"
+                      autocomplete="username"
+                      [placeholder]="'Username...'"
+                    />
+                    <span hidden>Username</span>
+                    <small
+                      [hidden]="loginForm.controls.username.valid || loginForm.controls.username.untouched"
+                      class="text-danger"
+                    >
+                      Username is required
+                    </small>
+                  </label>
+                  <label class="d-block">
+                    Password
+                    <input
+                      type="password"
+                      class="form-control"
+                      formControlName="password"
+                      autocomplete="current-password"
+                      [placeholder]="'**********'"
+                      required
+                    />
+                    <span hidden>Password</span>
+                    <small
+                      [hidden]="loginForm.controls.password.valid || loginForm.controls.password.untouched"
+                      class="text-danger"
+                    >
+                      Password is required
+                    </small>
+                  </label>
+                </div>
+                <div class="row">
+                  <div class="col-md">
+                    <a class="text-primary">Forget password?</a>
+                    <button
+                      class="btn btn-primary ml-auto float-right"
+                      type="submit"
+                      [disabled]="loginForm.invalid || isLoading"
+                    >
+                      <i class="fas fa-spinner text-white fa-spin" [hidden]="!isLoading"></i>
+                      <span> Login</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

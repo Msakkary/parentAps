@@ -1,0 +1,38 @@
+<header>
+  <nav class="navbar navbar-expand-lg container">
+    <a class="navbar-brand"><img src="/assets/Logo@2x.png" alt="Spaces Logo"/></a>
+    <button
+      class="navbar-toggler box-shadow"
+      type="button"
+      aria-controls="navbar-menu"
+      aria-label="Toggle navigation"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="!menuHidden"
+    >
+      <i class="fa fa-bars text-primary"></i>
+    </button>
+    <div id="navbar-menu" class="collapse float-right navbar-collapse float-xs-none " [ngbCollapse]="menuHidden">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link text-uppercase" (click)="gotoUsers()" routerLink="/users">
+          <span>Home</span>
+        </a>
+        <a class="nav-item nav-link text-uppercase" routerLink="/about" routerLinkActive="active">
+          <span>About</span>
+        </a>
+        <a class="nav-item nav-link text-uppercase" routerLink="/about" routerLinkActive="active">
+          <span>Contact</span>
+        </a>
+        <button class="btn btn-primary ml-auto" type="submit" routerLink="/login" *ngIf="!isUser">
+          <span>Login</span>
+        </button>
+        <button class="btn btn-primary ml-2 mr-3" *ngIf="isUser">
+          <span>Enguire</span>
+        </button>
+        <button class="btn btn-secondary ml-auto" (click)="logout()" *ngIf="isUser">
+          <i class="fa fa-sign-out-alt"></i>
+          <span> Logout</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>

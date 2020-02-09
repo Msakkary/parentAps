@@ -1,0 +1,50 @@
+@import "src/theme/theme-variables";
+@import "src/theme/theme";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+header {
+  position: relative;
+  z-index: 1;
+  background-color: $white;
+  height: 70px;
+  @extend .box-shadow;
+
+  .navbar {
+    margin-bottom: $spacer;
+    height: inherit;
+
+    .navbar-brand img {
+      max-height: 40px;
+    }
+
+    .navbar-nav a {
+      color: #34495e;
+      cursor: pointer;
+      margin: auto 7px;
+    }
+  }
+}
+
+.nav-link.dropdown-toggle {
+  cursor: pointer;
+}
+
+@include media-breakpoint-down(md) {
+  #navbar-menu .navbar-nav {
+    background: #fefefe;
+    padding: 15px;
+    text-align: center;
+    position: absolute;
+    right: 15px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+    .btn {
+      padding: 5px 15px;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      &.btn-secondary {
+        margin-top: 10px;
+      }
+    }
+  }
+}

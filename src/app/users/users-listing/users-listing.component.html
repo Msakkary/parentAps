@@ -1,0 +1,84 @@
+<section class="page-header">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/users">Home</a></li>
+      <li class="breadcrumb-item">Dashboard</li>
+    </ol>
+    <div class="page-title">
+      <h2>
+        Users List
+        <button type="button" class="btn btn-primary float-right" (click)="openAddUserModal()">
+          <i class="fa fa-plus"></i>
+          <span> New User</span>
+        </button>
+      </h2>
+    </div>
+  </div>
+  <div class="row"></div>
+</section>
+<section class="container card mt-5 mb-5">
+  <div class="row">
+    <div class="col-md listing">
+      <div class="row titles">
+        <div class="col-md-8 col-lg-9">User</div>
+        <div class="col-md-4 col-lg-3">Actions</div>
+      </div>
+      <div class="row mt-3">
+        <div
+          class="col-md-12"
+          [class.selected]="user === selectedUser && isUserDetailsVisible"
+          *ngFor="let user of usersList; let lastItem = last"
+          (click)="showUserDetails(user.id)"
+        >
+          <div class="row user-item">
+            <div class="col-md-8 col-lg-9 mt-auto">
+              <h5 class="mt-auto">
+                <img class=" user-avatar" src="{{ user.avatar }}" alt="{{ user.user_name }}" />
+                {{ user.user_name }}
+              </h5>
+            </div>
+            <div class="col-md-4 col-lg-3">
+              <button type="button" (click)="openEditUserModal(user.id)" class="btn btn-secondary btn-ico btn-sm">
+                <i class="fa fa-pen"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary btn-ico btn-sm ml-3"
+                (click)="openDeleteUserModal(user.id)"
+              >
+                <i class="fa fa-trash"></i>
+              </button>
+              <i class="fa fa-chevron-right text-primary"></i>
+            </div>
+          </div>
+          <hr *ngIf="!lastItem" />
+        </div>
+        <div class="col-md-12 text-center mb-3 text-primary " [hidden]="isLoading">
+          <i class="fa fa-spinner fa-spin fa-2x"></i>
+          <p><small> Loading more users</small></p>
+        </div>
+        <div class="col-md-12">
+          <div class="alert alert-primary text-center" role="alert" [hidden]="usersList.length > 0">
+            <strong>No Users Available</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 user-detail ml-auto" *ngIf="isUserDetailsVisible" [@slideInOut]>
+      <button type="button" class="close text-primary" aria-label="Close" (click)="isUserDetailsVisible = false">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <img class="avatar" src="{{ selectedUser.avatar }}" alt="{{ selectedUser.user_name }}" />
+      <h3>{{ selectedUser.user_name }}</h3>
+      <h6>{{ selectedUser.job_title }}</h6>
+      <button type="button" class="btn btn-primary btn-sm" (click)="openEditUserModal(selectedUser.id)">
+        <i class="fa fa-pen"></i> Edit
+      </button>
+      <button type="button" class="btn btn-secondary btn-sm ml-3" (click)="openDeleteUserModal(selectedUser.id)">
+        <i class="fa fa-trash"></i> Delete
+      </button>
+    </div>
+  </div>
+</section>
+<app-crud-modal #editModal></app-crud-modal>
